@@ -1,4 +1,4 @@
-package iamutkarshtiwari.github.io.ananas.editimage.fragment;
+package iamutkarshtiwari.github.io.ananas.editimage.fragment.crop;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,8 +17,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.isseiaoki.simplecropview.CropImageView;
-import com.isseiaoki.simplecropview.callback.CropCallback;
+
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +31,7 @@ import java.util.List;
 import iamutkarshtiwari.github.io.ananas.R;
 import iamutkarshtiwari.github.io.ananas.editimage.EditImageActivity;
 import iamutkarshtiwari.github.io.ananas.editimage.ModuleConfig;
+import iamutkarshtiwari.github.io.ananas.editimage.fragment.BaseEditFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.view.imagezoom.ImageViewTouchBase;
 
 
@@ -41,34 +42,6 @@ public class CropFragment extends BaseEditFragment {
     private View backToMenu;
     private LinearLayout ratioList;
     public CropImageView mCropPanel;
-
-
-    private enum RatioText {
-        FREE(R.string.free_size, CropImageView.CropMode.FREE),
-        FIT_IMAGE(R.string.fit_image, CropImageView.CropMode.FIT_IMAGE),
-        SQUARE(R.string.square, CropImageView.CropMode.SQUARE),
-        RATIO_3_4(R.string.ratio3_4, CropImageView.CropMode.RATIO_3_4),
-        RATIO_4_3(R.string.ratio4_3, CropImageView.CropMode.RATIO_4_3),
-        RATIO_9_16(R.string.ratio9_16, CropImageView.CropMode.RATIO_9_16),
-        RATIO_16_9(R.string.ratio16_9, CropImageView.CropMode.RATIO_16_9);
-
-        private int ratioTextId;
-
-        public CropImageView.CropMode getCropMode() {
-            return cropMode;
-        }
-
-        private CropImageView.CropMode cropMode;
-
-        RatioText(int ratioText, CropImageView.CropMode cropMode) {
-            this.ratioTextId = ratioText;
-            this.cropMode = cropMode;
-        }
-
-        public int getRatioTextId() {
-            return ratioTextId;
-        }
-    }
 
     private List<TextView> textViewList = new ArrayList<TextView>();
 
@@ -116,7 +89,6 @@ public class CropFragment extends BaseEditFragment {
             if (i == 0) {
                 selctedTextView = text;
             }
-            text.setTag(ratioTextList[i].getCropMode());
             text.setOnClickListener(mCropRationClick);
         }
         selctedTextView.setTextColor(SELECTED_COLOR);
@@ -183,6 +155,7 @@ public class CropFragment extends BaseEditFragment {
     public void applyCropImage() {
         // System.out.println("保存剪切图片");
         final Uri savedImageUri = getImageUri(getContext(), activity.getMainBit());
+
 
         mCropPanel.crop(savedImageUri)
                 .execute(new CropCallback() {

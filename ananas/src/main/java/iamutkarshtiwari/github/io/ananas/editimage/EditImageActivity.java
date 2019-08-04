@@ -32,7 +32,7 @@ import iamutkarshtiwari.github.io.ananas.R;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.AddTextFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.BeautyFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.BrightnessFragment;
-import iamutkarshtiwari.github.io.ananas.editimage.fragment.CropFragment;
+import iamutkarshtiwari.github.io.ananas.editimage.fragment.crop.CropFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.FilterListFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.MainMenuFragment;
 import iamutkarshtiwari.github.io.ananas.editimage.fragment.PaintFragment;
